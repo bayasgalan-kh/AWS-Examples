@@ -1,1 +1,38 @@
 #!/usr/bin/env bash
+echo "== sync"
+# Exit immediately if any command returns a non-zero status
+
+# Check if the first argument is provided
+if [ -z "$1" ]; then
+    echo "No bucket name provided."
+    exit 1
+fi
+
+# Check for filename prefix
+if [ -z "$2" ]; then
+    echo "No file name prefix provided."
+    exit 1
+fi
+
+BUCKET_NAME=$1
+FILENAME_PREFIX=$2
+
+OUTPUT_DIR="/tmp/s3-bash-scripts"
+
+rm -r $OUTPUT_DIR
+
+mkdir -p $OUTPUT_DIR
+
+NUM_FILES=$((RANDOM % 6 + 5))
+
+for ((i=1; i<=$NUM_FILES; i++)); do
+    
+    RANDOM_FILENAME="$OUTPUT_DIR/${FILENAME_PREFIX}_$i.txt"
+
+    dd if=/dev/urandom of="$RANDOM_FILENAME" bs=1024 count=$((RANDOM % 1024 + 1)) 2>/dev/null
+
+done
+
+tree $OUTPUT_DIR
+
+aws s3 sync $OUTPUT_DIR s3://$BUCKET_NAME/files
