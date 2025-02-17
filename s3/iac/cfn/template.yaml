@@ -1,0 +1,10 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: A simple S3 bucket
+
+Resources:
+  S3Bucket:
+    # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-s3-bucket.html
+    Type: 'AWS::S3::Bucket'
+    # Will generate new random bucket if not specified
+    # Properties:
+    #   BucketName: DOC-EXAMPLE-BUCKET
