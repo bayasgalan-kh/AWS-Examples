@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+aws cloudformation deploy \
+    --template-file template.yaml \
+    --stack-name my-sts-fun-stack-111 \
+    --capabilities CAPABILITY_IAM
+
+policy.json
+
+{
+    "Version": "2012-10-17",
+    "Statement": {
+        "Effect": "Allow",
+        "Action": "sts:AssumeRole",
+        "Resource": "arn:aws:iam::851725435979:role/my-sts-fun-stack-111-StsRole-nqMWISuZefGa"
+    }
+}
