@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -e
+
+# if [ -z "$1" ]; then
+#     echo "No namespace argument supplied eg. bin/deploy xl"
+#     echo "This is how know what toml file to aload eg. config/xl/config.toml"
+#     exit 1
+# fi
+
+root_path=$(realpath .)
+config_path="${root_path}/samconfig.toml"
+
+# if [ ! -f "${config_path}" ]; then
+#     echo "Config file not found: ${config_path}"
+#     exit 1
+# fi
+
+echo "== SAM deploy..."
+# echo "using config: ${config_path}"
+
+sam deploy \
+    --template-file "./.aws-sam/build/packaged.yaml" \
+    --stack-name "zip-package-lambda-py" \
+    --capabilities "CAPABILITY_IAM" \
+    --config-file "${config_path}"
