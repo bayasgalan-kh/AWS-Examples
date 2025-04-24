@@ -10,6 +10,12 @@
 brew install cfn-lint
 ```
 
+## Build and Deploy
+
+```sh
+sam build
+sam deploy
+```
 
 
 
