@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -e
+
+root_path=$(realpath .)
+config_path="${root_path}/samconfig.toml"
+
+if [ ! -f "${config_path}" ]; then
+    echo "Config file not found: ${config_path}"
+    exit 1
+fi
+
+template_path="${root_path}/.aws-sam/build/template.yaml"
+output_template_path="${root_path}/.aws-sam/build/packaged.yaml"
+
+echo "== SAM package deploy..."
+# echo "using config: ${config_path}"
+
+sam package \
+    --config-file "${config_path}" \
+    --template-file "./.aws-sam/build/template.yaml" \
+    --output-template-file "${output_template_path}" \
+    --s3-prefix "zip-package-lambda-python"
