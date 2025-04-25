@@ -3,8 +3,10 @@ Transform: AWS::Serverless-2016-10-31
 Resources:
   InlineLambda:
     Type: AWS::Serverless::Function
-    Properties:
+    Metadata:
+      DockerContext: ./
+      Dockerfile: Dockerfile
+    Properties:      
+      PackageType: Image
       Handler: function.handler
       Runtime: python3.12
-      PackageType: Zip
-      CodeUri: "./function/"
