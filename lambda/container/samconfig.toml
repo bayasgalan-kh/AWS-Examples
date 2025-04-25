@@ -2,6 +2,8 @@ version=0.1
 [default.package.parameters]
 s3_bucket = "my-lambd-artifacts"
 region = "us-east-1"
+image_repository = "851725435979.dkr.ecr.us-east-1.amazonaws.com/python-container-example"
 [default.deploy.parameters]
 s3_bucket = "my-lambd-artifacts"
 region = "us-east-1"
+image_repository = "851725435979.dkr.ecr.us-east-1.amazonaws.com/python-container-example"

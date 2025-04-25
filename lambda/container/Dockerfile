@@ -5,7 +5,7 @@ FROM public.ecr.aws/lambda/python:3.12
 COPY function/function.py function/requirements.txt /var/task/
 
 # Install the required Python packages
-RUN python3.12 -m pip install -r function/requirements.txt
+RUN python3.12 -m pip install -r /var/task/requirements.txt
 
 # Set the command to run the Lambda function
 CMD [ "function.handler" ]

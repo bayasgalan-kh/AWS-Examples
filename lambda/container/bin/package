@@ -19,4 +19,4 @@ sam package \
     --config-file "${config_path}" \
     --template-file "./.aws-sam/build/template.yaml" \
     --output-template-file "${output_template_path}" \
-    --s3-prefix "zip-package-lambda-python"
+    --s3-prefix "container-lambda-python"

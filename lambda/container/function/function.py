@@ -6,7 +6,7 @@ def handler(event, context):
     fake = Faker()
     fake.name()
 
-    message = 'Hello {} {}!'.format(fake.name())
+    message = 'Hello {}!'.format(fake.name())
     x = {
         "Type": "Container example",
         "Version": "1.0"
